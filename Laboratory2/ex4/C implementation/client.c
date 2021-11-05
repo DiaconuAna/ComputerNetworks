@@ -39,36 +39,34 @@ int main(int argc, char** argv) {
     server.sin_port = htons(atoi(argv[1]));
 
     //connect to the server
-    printf("hey\n");
+   
 
     int rc;
     rc = connect(sockfd, (struct sockaddr*)&server, sizeof(server));
-    printf("hey\n");
-
+  
     if(rc<0){
         perror("cannot connect to the server");
         exit(1);
     }
-    printf("hey\n");
-
+   
     int n;
-    printf("hey\n");
+ 
 
 
 
     int over =  0;
     int msg;
-    printf("hey\n");
+   
     while(!over) {
         printf("Size of the array: ");
         scanf("%d",&n);
         //n = htonl(n);
 
-        printf("\nsending data to server\n");
+       // printf("\nsending data to server\n");
         send(sockfd, &n, sizeof(n), 0);
 
         recv(sockfd, &msg, sizeof(msg), 0);
-        printf("msg = %d\n", msg);
+ 
 
         if(msg == 1 || n==0){
             over = 1;
@@ -90,7 +88,7 @@ int main(int argc, char** argv) {
 
     int size;
     recv(sockfd, &size, sizeof(size), 0);
-    printf("Size = %d\n", size);
+  //  printf("Size = %d\n", size);
 
     for(int i=0;i<size;i++){
         float no;
