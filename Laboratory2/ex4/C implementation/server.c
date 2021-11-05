@@ -96,18 +96,13 @@ void* clientThread(void* clientsocket){
 
 
         int n,i, tmp;
-
-        //pthread_mutex_lock(&lock);
-        tmp = recv(sockfd, &n, sizeof(n), 0);
-        //pthread_mutex_unlock(&lock);
+        tmp = recv(sockfd, &n, sizeof(n), 0);      
         if (tmp < 0) {
             perror("Error on receiving N from client");
         }
         printf("Client %d sent n = %d\n", sockfd, n);
-       // pthread_mutex_unlock(&lock);
 
         if (n == 0) {
-            //printf("hey client %d\n", sockfd);
             pthread_mutex_lock(&lock);
             over = 1;
             printf("Client %d sent N=0. Goodbye!", sockfd);
@@ -116,14 +111,14 @@ void* clientThread(void* clientsocket){
         }
         if(over){
             pthread_mutex_lock(&lock);
-            printf("\nSending %d to thread %d\n", over, sockfd);
+            //printf("\nSending %d to thread %d\n", over, sockfd);
             send(sockfd, &over, sizeof(over), 0);
             pthread_mutex_unlock(&lock);
             break;
         }
         else
         {pthread_mutex_lock(&lock);
-            printf("\nSending %d to thread %d\n", over, sockfd);
+          //  printf("\nSending %d to thread %d\n", over, sockfd);
             send(sockfd, &over, sizeof(over), 0);
             pthread_mutex_unlock(&lock);}
 
@@ -133,7 +128,7 @@ void* clientThread(void* clientsocket){
             if(over) break;
             pthread_mutex_lock(&lock);
             // float *array = malloc(sizeof(float) * n);
-            printf("Thread %d sent the array: \n", sockfd);
+            //printf("Thread %d sent the array: \n", sockfd);
             for ( i = 0; i < n; i++) {
                 float number;
                 tmp = recv(sockfd, &number, sizeof(number), 0);
@@ -142,7 +137,7 @@ void* clientThread(void* clientsocket){
                     perror("Error on receiving from client");
                 }
                 appendToArray(number);
-                printf("%.2f ", number);
+              //  printf("%.2f ", number);
             }
 
               pthread_mutex_unlock(&lock);
@@ -155,22 +150,14 @@ void* clientThread(void* clientsocket){
 
     int j;
 
-   // for(j=0;j<size;j++)
-    //    printf("%.2f , ",bigArray[j]);
-
-   // pthread_mutex_lock(&lock);
+  
     mergeSort(bigArray, 0 ,size-1);
     printf("\nThread %d got out\n", sockfd);
     send(sockfd, &size, sizeof(size), 0);
     for(j=0; j < size;j++){
         send(sockfd, &bigArray[j], sizeof(bigArray[j]), 0);
     }
-   // printf("size = %d\n", size);
-   // for(j=0;j<size;j++)
-   //     printf("j = %d ",j);
-  //  printf("hey??");
-   // pthread_mutex_unlock(&lock);
-
+  
     close(sockfd);
     return NULL;
 
@@ -220,10 +207,6 @@ int main(int argc, char** argv) {
     len = sizeof(struct sockaddr_in);
     bzero(&client, len);
 
-   // sock_client = accept(sock_server, (struct sockaddr*)&client, (socklen_t*)&len);
-
-
-
 
     pthread_t thread;
     pthread_mutex_init(&lock, NULL);
@@ -241,7 +224,7 @@ int main(int argc, char** argv) {
             i = i+1;
             pthread_create(&threads[i], NULL, clientThread, (void*)&sock_client);
             pthread_detach(threads[i]);
-            printf("goodbye %d\n", i);
+            //printf("goodbye %d\n", i);
         }
 
         for(int j=0;j<=i;j++)
