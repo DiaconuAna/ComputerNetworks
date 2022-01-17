@@ -6,5 +6,6 @@
  ✧ [Lecture 4 - UDP API](https://unexpected-fin-7b2.notion.site/Lecture-4-56fbda7409024e26a31272f75c24379a)\
  ✦ [Lecture 5 - Broadcast, Select, Protocols](https://unexpected-fin-7b2.notion.site/Lecture-5-78b4dd8b4386448981f9d9ef5b4740ac)\
  ✧ [Lecture 6 - Protocols. OSI reference model](https://unexpected-fin-7b2.notion.site/Lecture-6-bbbb73d8ee2e4571abc1f1ccafcb15f2)\
- ✦ [Lecture 7 - The Network Layer](https://unexpected-fin-7b2.notion.site/Lecture-7-2c4b7734198f4acbb4c6cb4c428bc1c2)
- ✧ 
+ ✦ [Lecture 7 - The Network Layer](https://unexpected-fin-7b2.notion.site/Lecture-7-2c4b7734198f4acbb4c6cb4c428bc1c2)\
+ ✧ [Lecture 8 - IP datagram, ARP, UDP and TCP](https://unexpected-fin-7b2.notion.site/Lecture-8-705dc6878bbc4591ac7dc8c48ae77e19)\
+ ✦ [Lecture 9](https://unexpected-fin-7b2.notion.site/Lecture-9-6bb38c5af6ae4d188834a7f6f92b33e7)
